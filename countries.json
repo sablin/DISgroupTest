@@ -1,0 +1,32 @@
+{
+  "countries": [
+    {
+      "name": "Latvia",
+      "capital": "Riga"
+    },
+    {
+      "name": "Austria",
+      "capital": "Vienna"
+    },
+    {
+      "name": "Portugal",
+      "capital": "Lisbon"
+    },
+    {
+      "name": "Iceland",
+      "capital": "Reykjavik"
+    },
+    {
+      "name": "United Kingdom",
+      "capital": "London"
+    },
+    {
+      "name": "Greece",
+      "capital": "Athens"
+    },
+    {
+      "name": "Spain",
+      "capital": "Madrid"
+    }
+  ]
+}

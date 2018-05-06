@@ -1,0 +1,27 @@
+.table{
+    text-align: center;
+}
+.del{
+    background: red;
+}
+.form-control{
+    width:300px;
+    margin:50px 0;
+}
+.modal-window{
+    width: 300px;
+    display: block;
+    padding: 30px;
+    background: white;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left:50%;
+    transform: translateX(-50%);
+}
+.modal-window input{
+    display: block;
+    width:100%;
+    margin:20px 0;
+}
