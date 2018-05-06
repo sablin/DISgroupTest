@@ -77,7 +77,7 @@ choseCountry();
 function deleteCountry(){
     var delCountry = document.querySelectorAll(".del");
     for(var i=0;i<delCountry.length;i++){
-        delCountry[i].style.display = 'none';
+        delCountry[i].remove();
     }
 }
 
