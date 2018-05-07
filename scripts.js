@@ -1,10 +1,11 @@
-    var a;
+    var a, score=0;
     var modalBtn = document.querySelector('#addCountry'),
         modalWindow = document.querySelector('.modal-window'),
         cancelBtn = document.querySelector('#cancel'),
         createCountry = document.querySelector('#createCountry'),
         tab = document.querySelector(".countries"),
-        table = document.querySelector("#sf");
+        table = document.querySelector("#sf"),
+        delCountry = document.querySelector(".delCountry");
 
 function sendAjax(url){
     return new Promise((resolve, reject) => {
@@ -58,6 +59,13 @@ sendAjax("countries.json").then(function(response) {
         tab.appendChild(d);
         modalWindow.style.display = 'none';
     });
+    function disButton(){
+        if(score > 0){
+            delCountry.disabled = false;
+        }else{
+            delCountry.disabled = true;
+        }
+    };
 
 
 
@@ -68,9 +76,12 @@ function choseCountry() {
         div[i].addEventListener("click", function () {
             if(this.classList.contains('del')){
                 this.classList.remove('del');
+                score--;
             }else{
                 this.classList.add("del");
-            }
+                score++;
+                }
+            disButton();
         })}
 };
 choseCountry();
@@ -80,6 +91,8 @@ function deleteCountry(){
     for(var i=0;i<delCountry.length;i++){
         delCountry[i].remove();
     }
+    score = 0;
+    disButton();
 }
 
 //Фильтруем таблицу
@@ -110,7 +123,7 @@ var observer = new MutationObserver(function() {
  choseCountry();
  });
 // создаем конфигурации для наблюдателя
-var config = { attributes: false, childList: true, characterData: true };
+var config = { attributes: false, childList: true, characterData: false };
 // запускаем механизм наблюдения
 observer.observe(target,  config);
 
