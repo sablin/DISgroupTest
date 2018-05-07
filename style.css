@@ -1,6 +1,9 @@
 .table{
     text-align: center;
 }
+tr:hover{
+    cursor: pointer;
+}
 .del{
     background: red;
 }
