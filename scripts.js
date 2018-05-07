@@ -3,7 +3,8 @@
         modalWindow = document.querySelector('.modal-window'),
         cancelBtn = document.querySelector('#cancel'),
         createCountry = document.querySelector('#createCountry'),
-        tab = document.querySelector(".countries");
+        tab = document.querySelector(".countries"),
+        table = document.querySelector("#sf");
 
 function sendAjax(url){
     return new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ sendAjax("countries.json").then(function(response) {
 }).then(function(data) {
      a = data;
     var country = a;
-    for (var i = 0; i <= 8; i++) {
+    for (var i = 0; i < 7; i++) {
         var d = document.createElement("tr");
         d.className = "dov";
         d.innerHTML = `<td>` + country.countries[i].name + `</td> <td>` + country.countries[i].capital + `</td>`;
@@ -100,6 +101,7 @@ function filter (phrase, _id){
         table.rows[r].style.display = displayStyle;
     }
 }
+
 // Создаем наблюдателя за изменениями в dom
 // выбираем нужный элемент
 var target = document.querySelector('tbody');
@@ -111,4 +113,46 @@ var observer = new MutationObserver(function() {
 var config = { attributes: false, childList: true, characterData: true };
 // запускаем механизм наблюдения
 observer.observe(target,  config);
+
+
+    //Сортировка чекбоксом
+
+    function sortColumn(e){
+        var sortType = document.querySelector("#selectSort").value;
+        if(sortType == 'country'){
+            sortTable(0);
+            console.log('country')
+        }else if(sortType == 'capital') {
+            sortTable(1);
+            console.log('capital')
+        }else{
+            console.log('standart')
+        }
+    }
+
+    function sortTable(type) {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("sf");
+        switching = true;
+        while (switching) {
+             switching = false;
+            rows = table.getElementsByTagName("TR");
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[type];
+                y = rows[i + 1].getElementsByTagName("TD")[type];
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch= true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                   rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+
+
+
 

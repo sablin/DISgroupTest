@@ -9,7 +9,15 @@
 <body>
 <div class="container">
     <h1>Country select</h1>
+    <div class="form-group">
     <input type="text" placeholder="Enter country/capital" class="form-control" name="filt" onkeyup="filter(this, 'sf')" onkeyup="tableSearch()">
+    <label for="selectSort">Select sort:</label>
+    <select name="selectSort" id="selectSort" class="form-control" onchange="sortColumn()">
+        <option value="standart" disabled selected hidden>standart</option>
+        <option value="country">country</option>
+        <option value="capital">capital</option>
+    </select>
+        </div>
     <table class="table table-hover" id="sf" >
         <thead>
         <tr>
@@ -35,6 +43,9 @@
         <button class="btn" id="cancel">Отмена</button>
     </form>
 </div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vquery/5.0.1/v.min.js"></script>
