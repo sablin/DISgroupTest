@@ -27,7 +27,7 @@ sendAjax("countries.json").then(function(response) {
 }).then(function(data) {
      a = data;
     var country = a;
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < country.countries.length; i++) {
         var d = document.createElement("tr");
         d.className = "dov";
         d.innerHTML = `<td>` + country.countries[i].name + `</td> <td>` + country.countries[i].capital + `</td>`;
